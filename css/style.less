@@ -1,0 +1,131 @@
+@import "normalize";
+@import "includes";
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,700);
+
+@black: #000;
+@red:   #c00;
+@blue:  #39c;
+
+html, body {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+    background: url(../img/lightpaperfibers/lightpaperfibers.png) repeat; 
+    * { 
+        transition: all .2s ease;
+        -moz-transition: all .2s ease;
+        -webkit-transition: all .2s ease; 
+        -moz-box-sizing: border-box; 
+        -webkit-box-sizing: border-box; 
+        box-sizing: border-box; 
+    }
+}
+
+
+a {
+    color: @blue;
+    text-decoration: none;
+    &:hover {
+        color: @red;
+        text-decoration: underline;
+    }
+/*    &:active, &:visited {
+        color: @blue;
+        text-decoration: none;
+    }
+ */
+}
+
+header {
+    text-align: center;
+
+    h1 { 
+        margin-left: -0.7em;
+        display: inline-block;
+        font-weight: 200;
+        font-size: 3em;
+        color: @red;
+
+        .dark {
+            color: @black;
+            padding: 0 .1em;
+        }
+        .logo {
+            // TODO: vendor prefixen
+            opacity: 0.6;
+            background: url(../img/wing.svg) no-repeat center center; 
+            background-size: 100% 100%;
+            display: inline-block;
+            width: 1.4em;
+            margin-right: .3em;
+        }
+    }
+
+    nav {
+        @navbg: lighten(@blue, 8%);
+        @navbgalt: darken(@blue, 15%);
+        margin-bottom: 0.9em;
+        white-space: nowrap;
+        ul {
+            margin: 0;
+            padding: 0;
+            list-style-type: none;      
+            li {
+                display: inline-block;
+                width: 6em;
+                padding: 2px;
+                .gradient(@blue, @navbg);
+                .text-shadow();
+                &.selected {
+                    .gradient(@red, lighten(@red, 8%));
+                }
+            }
+            a, a:visited, a:hover, a:active {
+//                border: 1px dashed lighten(@navbg, 8%);
+                padding: 0 1em;
+                color: white;
+                text-decoration: none;
+                display: inline-block;
+                height: 2em;
+                width: 100%;
+                line-height: 2em;
+                &:hover, &:active {
+                    color: @black;
+                }
+
+            }
+            a:hover {
+            }
+        }
+    }
+}
+
+#mainContent {
+    font-weight: 200;
+    font-size: .8em;
+    margin: 0 1em;
+    min-height: 50em;
+}
+
+footer {
+    background: @black;
+    color: @red;
+
+    padding: 2em;
+    .box-shadow(0 -5px 10px  #666);
+}
+@media screen and (max-width: 30em) {
+    header, nav {
+        text-align: center;
+    }
+    header nav ul {
+        li {
+            display: block;
+            width: 100%;
+        }
+    }
+
+    #mainContent {
+        font-size: 1em;
+    }    
+}
+
